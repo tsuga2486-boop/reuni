@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ['/dashboard/', '/chat/', '/api/'],
             },
         ],
-        sitemap: 'https://reuni.vercel.app/sitemap.xml',
+        sitemap: 'https://reuni-reuni1.vercel.app/sitemap.xml',
     };
 }

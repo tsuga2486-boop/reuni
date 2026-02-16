@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://reuni.vercel.app';
+const BASE_URL = 'https://reuni-reuni1.vercel.app';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const now = new Date();
