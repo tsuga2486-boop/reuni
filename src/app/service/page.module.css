@@ -1,0 +1,255 @@
+.servicePage {
+    padding-bottom: var(--space-4xl);
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, var(--secondary-600) 0%, var(--secondary-800) 100%);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero h1 {
+    color: white;
+    margin-bottom: var(--space-lg);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.heroSubtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Services */
+.services {
+    padding: var(--space-4xl) 0;
+    margin-top: -60px;
+}
+
+.servicesGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .servicesGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.serviceCard {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: var(--space-2xl);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid var(--neutral-100);
+    transition: all var(--transition-normal);
+    text-decoration: none;
+}
+
+.serviceCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary-200);
+}
+
+.serviceCard:hover .serviceLink {
+    color: var(--primary-600);
+}
+
+.serviceIcon {
+    font-size: 2.75rem;
+    margin-bottom: var(--space-lg);
+}
+
+.serviceCard h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    color: var(--neutral-800);
+}
+
+.serviceCard p {
+    color: var(--neutral-500);
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: var(--space-lg);
+    font-size: 0.9rem;
+}
+
+.serviceLink {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--neutral-400);
+    transition: color var(--transition-fast);
+}
+
+.serviceLink span {
+    transition: transform var(--transition-fast);
+}
+
+.serviceCard:hover .serviceLink span {
+    transform: translateX(4px);
+}
+
+/* How to Use */
+.howToUse {
+    padding: var(--space-4xl) 0;
+    background: var(--neutral-50);
+}
+
+.howToUse h2 {
+    margin-bottom: var(--space-3xl);
+    text-align: center;
+    font-weight: 800;
+}
+
+.flowGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 1024px) {
+    .flowGrid {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+.flowItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-100);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    min-width: 180px;
+    transition: all var(--transition-normal);
+}
+
+.flowItem:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.flowNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+    color: white;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    margin-bottom: var(--space-md);
+    box-shadow: 0 2px 8px rgba(232, 117, 29, 0.3);
+}
+
+.flowItem h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+    color: var(--neutral-800);
+}
+
+.flowItem p {
+    color: var(--neutral-400);
+    font-size: 0.85rem;
+}
+
+.flowArrow {
+    display: none;
+    font-size: 1.25rem;
+    color: var(--neutral-300);
+}
+
+@media (min-width: 1024px) {
+    .flowArrow {
+        display: block;
+    }
+}
+
+/* CTA */
+.cta {
+    padding: var(--space-4xl) 0;
+}
+
+.ctaCard {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-700) 100%);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-3xl);
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaCard::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ctaCard h2 {
+    color: white;
+    margin-bottom: var(--space-md);
+    font-weight: 800;
+}
+
+.ctaCard p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-xl);
+}
+
+.ctaCard .btn-primary {
+    background: white;
+    color: var(--primary-700);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.ctaCard .btn-primary:hover {
+    background: var(--primary-50);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}

@@ -1,0 +1,265 @@
+.sightingsPage {
+    padding-bottom: var(--space-4xl);
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(135deg, var(--info) 0%, #1e40af 100%);
+    padding: var(--space-3xl) 0;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero h1 {
+    color: white;
+    margin-bottom: var(--space-md);
+    font-weight: 800;
+}
+
+.heroSubtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.05rem;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+    margin-bottom: var(--space-md);
+    transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+    color: white;
+}
+
+/* Actions */
+.actions {
+    background: var(--secondary-50);
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--secondary-100);
+}
+
+.actionsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .actionsContent {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.actionsContent p {
+    color: var(--secondary-700);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Filters */
+.filters {
+    padding: var(--space-xl) 0;
+    background: white;
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.filtersGrid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .filtersGrid {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+}
+
+.filterGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.filterGroup label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--neutral-500);
+    letter-spacing: 0.01em;
+}
+
+.filterButtons {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.filterBtn {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--neutral-500);
+    background: var(--neutral-100);
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.filterBtn:hover {
+    background: var(--neutral-200);
+    border-color: var(--neutral-300);
+}
+
+.filterBtn.active {
+    background: var(--primary-500);
+    color: white;
+    border-color: var(--primary-500);
+}
+
+/* Sightings List */
+.sightingsList {
+    padding: var(--space-2xl) 0;
+}
+
+.resultCount {
+    color: var(--neutral-400);
+    margin-bottom: var(--space-lg);
+    font-size: 0.9rem;
+}
+
+.sightingsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .sightingsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.sightingCard {
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-100);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.sightingCard:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    border-color: var(--primary-200);
+    transform: translateY(-2px);
+}
+
+.sightingHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.sightingTime {
+    font-size: 0.8rem;
+    color: var(--neutral-400);
+}
+
+.sightingImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    background: linear-gradient(135deg, var(--neutral-50), var(--neutral-100));
+}
+
+.sightingEmoji {
+    font-size: 4rem;
+}
+
+.sightingContent {
+    padding: var(--space-lg);
+}
+
+.sightingDescription {
+    color: var(--neutral-600);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+
+.sightingMeta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    font-size: 0.8rem;
+    color: var(--neutral-400);
+}
+
+@media (min-width: 768px) {
+    .sightingMeta {
+        flex-direction: row;
+        gap: var(--space-lg);
+    }
+}
+
+.sightingActions {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-lg);
+    padding-top: 0;
+}
+
+.sightingActions .btn {
+    flex: 1;
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: var(--space-4xl) 0;
+}
+
+.emptyIcon {
+    font-size: 4rem;
+    margin-bottom: var(--space-lg);
+}
+
+.emptyState h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--neutral-700);
+    font-weight: 700;
+}
+
+.emptyState p {
+    color: var(--neutral-400);
+}

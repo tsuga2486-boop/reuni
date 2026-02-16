@@ -1,0 +1,224 @@
+.companyPage {
+    padding-bottom: var(--space-4xl);
+}
+
+/* Hero */
+.hero {
+    background:
+        radial-gradient(ellipse at top left, rgba(232, 117, 29, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(5, 199, 178, 0.08) 0%, transparent 50%),
+        var(--neutral-50);
+    padding: var(--space-4xl) 0;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: var(--space-lg);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.heroSubtitle {
+    font-size: 1.05rem;
+    color: var(--neutral-500);
+    line-height: 1.8;
+}
+
+/* Company Info */
+.companyInfo {
+    padding: var(--space-4xl) 0;
+}
+
+.infoCard {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+    border: 1px solid var(--neutral-100);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.infoCard h2 {
+    margin-bottom: var(--space-xl);
+    text-align: center;
+    font-weight: 800;
+}
+
+.infoTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.infoTable th,
+.infoTable td {
+    padding: 0.875rem var(--space-md);
+    border-bottom: 1px solid var(--neutral-100);
+    text-align: left;
+}
+
+.infoTable th {
+    width: 30%;
+    color: var(--neutral-500);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.infoTable td {
+    color: var(--neutral-800);
+    font-size: 0.95rem;
+}
+
+.infoTable tr:last-child th,
+.infoTable tr:last-child td {
+    border-bottom: none;
+}
+
+/* Team */
+.team {
+    padding: var(--space-4xl) 0;
+    background: var(--neutral-50);
+}
+
+.team h2 {
+    margin-bottom: var(--space-md);
+    text-align: center;
+    font-weight: 800;
+}
+
+.teamSubtitle {
+    text-align: center;
+    color: var(--neutral-400);
+    margin-bottom: var(--space-3xl);
+}
+
+.teamGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .teamGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.teamMember {
+    text-align: center;
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-100);
+    transition: all var(--transition-normal);
+}
+
+.teamMember:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    border-color: var(--primary-200);
+}
+
+.memberAvatar {
+    font-size: 4rem;
+    margin-bottom: var(--space-md);
+}
+
+.teamMember h4 {
+    margin-bottom: var(--space-xs);
+    color: var(--neutral-800);
+    font-weight: 700;
+}
+
+.teamMember p {
+    color: var(--neutral-400);
+    font-size: 0.875rem;
+}
+
+/* Contact */
+.contact {
+    padding: var(--space-4xl) 0;
+}
+
+.contactCard {
+    background: linear-gradient(135deg, var(--secondary-600) 0%, var(--secondary-800) 100%);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-3xl);
+    text-align: center;
+    color: white;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.contactCard::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -15%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contactCard h2 {
+    color: white;
+    margin-bottom: var(--space-lg);
+    font-weight: 800;
+}
+
+.contactCard>p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--space-2xl);
+    line-height: 1.8;
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+    .contactInfo {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-2xl);
+    }
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 1.05rem;
+}
+
+.contactIcon {
+    font-size: 1.5rem;
+}
+
+.legalLinks {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.legalLink {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color var(--transition-fast);
+}
+
+.legalLink:hover {
+    color: white;
+    text-decoration: underline;
+}

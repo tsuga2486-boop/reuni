@@ -1,0 +1,143 @@
+.myPetsPage {
+    padding: var(--space-2xl) 0 var(--space-4xl);
+}
+
+.pageHeader {
+    margin-bottom: var(--space-2xl);
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--neutral-400);
+    font-size: 0.85rem;
+    margin-bottom: var(--space-lg);
+    transition: color var(--transition-fast);
+}
+
+.backLink:hover {
+    color: var(--primary-600);
+}
+
+.headerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.headerContent h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+/* Pets Grid */
+.petsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .petsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .petsGrid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.petCard {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-100);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    text-decoration: none;
+}
+
+.petCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+    border-color: var(--primary-200);
+}
+
+.petImage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    background: linear-gradient(135deg, var(--neutral-50), var(--neutral-100));
+}
+
+.petEmoji {
+    font-size: 5rem;
+}
+
+.lostBadge {
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background: var(--warning);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+    letter-spacing: 0.02em;
+}
+
+.petInfo {
+    padding: var(--space-lg);
+    padding-bottom: var(--space-sm);
+}
+
+.petInfo h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+.petInfo p {
+    color: var(--neutral-400);
+    font-size: 0.85rem;
+}
+
+.petStatus {
+    padding: 0 var(--space-lg) var(--space-lg);
+}
+
+/* Empty State */
+.emptyState {
+    text-align: center;
+    padding: var(--space-4xl);
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-100);
+}
+
+.emptyIcon {
+    font-size: 5rem;
+    margin-bottom: var(--space-lg);
+}
+
+.emptyState h3 {
+    margin-bottom: var(--space-sm);
+    color: var(--neutral-700);
+    font-weight: 700;
+}
+
+.emptyState p {
+    color: var(--neutral-400);
+    margin-bottom: var(--space-xl);
+}
