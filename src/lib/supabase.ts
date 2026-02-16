@@ -1,4 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
 import { createBrowserClient } from '@supabase/ssr';
 
 // 環境変数のチェック
@@ -12,19 +11,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
     );
 }
 
-// クライアント用Supabaseインスタンス
-export const supabase = createClient(
+// ブラウザ用Supabaseインスタンス（Cookie対応）
+export const supabase = createBrowserClient(
     supabaseUrl || '',
     supabaseAnonKey || ''
 );
-
-// ブラウザ用クライアント（クッキー対応）
-export function createSupabaseBrowserClient() {
-    return createBrowserClient(
-        supabaseUrl || '',
-        supabaseAnonKey || ''
-    );
-}
 
 // =====================================================
 // 型定義
