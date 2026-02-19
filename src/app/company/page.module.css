@@ -222,3 +222,32 @@
     color: white;
     text-decoration: underline;
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .hero {
+        padding: var(--space-2xl) 0;
+    }
+
+    .heroSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .infoTable th,
+    .infoTable td {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.85rem;
+    }
+
+    .teamCard {
+        padding: var(--space-lg);
+    }
+
+    .teamEmoji {
+        font-size: 2.5rem;
+    }
+
+    .contactCard {
+        padding: var(--space-lg);
+    }
+}

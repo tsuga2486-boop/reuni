@@ -506,3 +506,46 @@
         justify-content: center;
     }
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .hero {
+        padding: var(--space-2xl) 0;
+    }
+
+    .heroSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .storyText p {
+        font-size: 0.9rem;
+    }
+
+    .storyVisual span {
+        font-size: 4rem;
+    }
+
+    .valueCard {
+        padding: var(--space-lg);
+    }
+
+    .valueIcon {
+        font-size: 2rem;
+    }
+
+    .teamMember {
+        padding: var(--space-lg);
+    }
+
+    .contactCard {
+        padding: var(--space-lg);
+    }
+
+    .missionSection {
+        padding: var(--space-2xl);
+    }
+
+    .ctaContent>p {
+        font-size: 0.9rem;
+    }
+}

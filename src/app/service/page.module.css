@@ -253,3 +253,38 @@
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .hero {
+        padding: var(--space-2xl) 0;
+    }
+
+    .heroSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .services {
+        margin-top: -30px;
+    }
+
+    .serviceCard {
+        padding: var(--space-lg);
+    }
+
+    .serviceIcon {
+        font-size: 2rem;
+    }
+
+    .serviceCard p {
+        font-size: 0.875rem;
+    }
+
+    .flowStep {
+        padding: var(--space-lg);
+    }
+
+    .ctaCard {
+        padding: var(--space-xl);
+    }
+}

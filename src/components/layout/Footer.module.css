@@ -149,3 +149,32 @@
     border-color: var(--primary-600);
     transform: translateY(-2px);
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .footer {
+        padding: var(--space-2xl) 0 var(--space-lg);
+        margin-top: var(--space-2xl);
+    }
+
+    .footerInner {
+        gap: var(--space-xl);
+    }
+
+    .footerGrid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+
+    .brandDescription {
+        font-size: 0.8rem;
+    }
+
+    .footerColumnTitle {
+        font-size: 0.85rem;
+    }
+
+    .footerLink {
+        font-size: 0.8rem;
+    }
+}

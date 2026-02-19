@@ -299,3 +299,38 @@
 .activityLink:hover {
     text-decoration: underline;
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .dashboardPage {
+        padding: var(--space-lg) 0 var(--space-2xl);
+    }
+
+    .userName {
+        font-size: 1.25rem;
+    }
+
+    .quickAction {
+        padding: var(--space-lg);
+    }
+
+    .quickActionIcon {
+        font-size: 1.75rem;
+    }
+
+    .statCard {
+        padding: var(--space-lg);
+    }
+
+    .statNumber {
+        font-size: 1.5rem;
+    }
+
+    .petCard {
+        padding: var(--space-md);
+    }
+
+    .activityItem {
+        padding: var(--space-md);
+    }
+}

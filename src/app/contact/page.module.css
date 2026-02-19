@@ -266,3 +266,36 @@
     text-align: center;
     margin-top: var(--space-xl);
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .hero {
+        padding: var(--space-2xl) 0;
+    }
+
+    .heroSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .contactCard {
+        padding: var(--space-lg);
+    }
+
+    .contactIcon {
+        font-size: 1.75rem;
+    }
+
+    .formGroup label {
+        font-size: 0.85rem;
+    }
+
+    .faqItem summary {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.9rem;
+    }
+
+    .faqItem div {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.875rem;
+    }
+}

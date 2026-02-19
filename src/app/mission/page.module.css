@@ -297,3 +297,34 @@
         justify-content: center;
     }
 }
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .hero {
+        padding: var(--space-2xl) 0;
+    }
+
+    .heroSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .problemCard {
+        padding: var(--space-lg);
+    }
+
+    .problemIcon {
+        font-size: 2rem;
+    }
+
+    .visionCard {
+        padding: var(--space-lg);
+    }
+
+    .visionNumber {
+        font-size: 1.5rem;
+    }
+
+    .ctaContent p {
+        font-size: 0.9rem;
+    }
+}
