@@ -114,11 +114,13 @@ export default function Header() {
                 </div>
 
                 <button
-                    className={styles.menuToggle}
+                    className={`${styles.menuToggle} ${isMenuOpen ? styles.menuToggleOpen : ''}`}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                     aria-label="メニュー"
                 >
-                    <span className={`${styles.menuBar} ${isMenuOpen ? styles.menuBarOpen : ''}`}></span>
+                    <span className={styles.menuBar}></span>
+                    <span className={styles.menuBar}></span>
+                    <span className={styles.menuBar}></span>
                 </button>
             </div>
         </header>

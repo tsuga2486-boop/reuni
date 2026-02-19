@@ -76,51 +76,37 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
-    padding: var(--space-sm);
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    gap: 6px;
+    cursor: pointer;
+    background: none;
+    border: none;
 }
 
 .menuBar {
-    position: relative;
-    width: 24px;
+    display: block;
+    width: 22px;
     height: 2px;
     background: var(--neutral-700);
-    border-radius: 2px;
-    transition: all var(--transition-fast);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    transform-origin: center;
 }
 
-.menuBar::before,
-.menuBar::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background: var(--neutral-700);
-    border-radius: 2px;
-    transition: all var(--transition-fast);
+/* 開いた時: ×マークに変形 */
+.menuToggleOpen .menuBar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
 }
 
-.menuBar::before {
-    top: -7px;
+.menuToggleOpen .menuBar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
 }
 
-.menuBar::after {
-    bottom: -7px;
-}
-
-.menuBarOpen {
-    background: transparent;
-}
-
-.menuBarOpen::before {
-    top: 0;
-    transform: rotate(45deg);
-}
-
-.menuBarOpen::after {
-    bottom: 0;
-    transform: rotate(-45deg);
+.menuToggleOpen .menuBar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 @media (min-width: 1024px) {
