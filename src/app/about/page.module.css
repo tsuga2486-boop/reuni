@@ -510,42 +510,74 @@
 /* Mobile optimization */
 @media (max-width: 767px) {
     .hero {
-        padding: var(--space-2xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .heroSubtitle {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .story {
+        padding: var(--space-xl) 0;
     }
 
     .storyText p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .storyVisual span {
-        font-size: 4rem;
+        font-size: 3rem;
+    }
+
+    /* バリューカードを2列に */
+    .valuesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
     }
 
     .valueCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 
     .valueIcon {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: var(--space-xs);
+    }
+
+    .valueCard h3 {
+        font-size: 0.85rem;
+    }
+
+    .valueCard p {
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .teamSection {
+        padding: var(--space-xl) 0;
     }
 
     .teamMember {
-        padding: var(--space-lg);
+        padding: var(--space-md);
+    }
+
+    .contactSection {
+        padding: var(--space-xl) 0;
     }
 
     .contactCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 
     .missionSection {
-        padding: var(--space-2xl);
+        padding: var(--space-lg);
+    }
+
+    .ctaSection {
+        padding: var(--space-xl) 0;
     }
 
     .ctaContent>p {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 }

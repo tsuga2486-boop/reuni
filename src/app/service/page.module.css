@@ -257,34 +257,59 @@
 /* Mobile optimization */
 @media (max-width: 767px) {
     .hero {
-        padding: var(--space-2xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .heroSubtitle {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .services {
-        margin-top: -30px;
+        margin-top: -20px;
+        padding: var(--space-xl) 0;
+    }
+
+    /* サービスカードを2列に */
+    .servicesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
     }
 
     .serviceCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 
     .serviceIcon {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin-bottom: var(--space-xs);
+    }
+
+    .serviceCard h3 {
+        font-size: 0.85rem;
     }
 
     .serviceCard p {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .usageSection {
+        padding: var(--space-xl) 0;
     }
 
     .flowStep {
-        padding: var(--space-lg);
+        padding: var(--space-md);
+    }
+
+    .flowStep h3 {
+        font-size: 0.85rem;
+    }
+
+    .flowStep p {
+        font-size: 0.75rem;
     }
 
     .ctaCard {
-        padding: var(--space-xl);
+        padding: var(--space-lg);
     }
 }

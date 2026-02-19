@@ -226,28 +226,45 @@
 /* Mobile optimization */
 @media (max-width: 767px) {
     .hero {
-        padding: var(--space-2xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .heroSubtitle {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .infoSection {
+        padding: var(--space-xl) 0;
     }
 
     .infoTable th,
     .infoTable td {
-        padding: var(--space-sm) var(--space-md);
-        font-size: 0.85rem;
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.8rem;
+    }
+
+    .teamGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
     }
 
     .teamCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 
     .teamEmoji {
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .teamCard h3 {
+        font-size: 0.85rem;
+    }
+
+    .teamCard p {
+        font-size: 0.75rem;
     }
 
     .contactCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 }

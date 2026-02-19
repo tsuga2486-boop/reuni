@@ -270,32 +270,57 @@
 /* Mobile optimization */
 @media (max-width: 767px) {
     .hero {
-        padding: var(--space-2xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .heroSubtitle {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .contactSection {
+        padding: var(--space-xl) 0;
+    }
+
+    .contactGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-sm);
     }
 
     .contactCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 
     .contactIcon {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+    }
+
+    .contactCard h3 {
+        font-size: 0.85rem;
+    }
+
+    .contactCard p {
+        font-size: 0.75rem;
+    }
+
+    .formSection {
+        padding: var(--space-xl) 0;
     }
 
     .formGroup label {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+    }
+
+    .faqSection {
+        padding: var(--space-xl) 0;
     }
 
     .faqItem summary {
         padding: var(--space-sm) var(--space-md);
-        font-size: 0.9rem;
+        font-size: 0.85rem;
     }
 
     .faqItem div {
         padding: var(--space-sm) var(--space-md);
-        font-size: 0.875rem;
+        font-size: 0.8rem;
     }
 }
