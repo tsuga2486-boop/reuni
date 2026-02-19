@@ -16,6 +16,19 @@ export default function PetDetailPage() {
     const [showLostModal, setShowLostModal] = useState(false);
     const [lostLocation, setLostLocation] = useState('');
 
+    // 編集モード
+    const [isEditing, setIsEditing] = useState(false);
+    const [isSaving, setIsSaving] = useState(false);
+    const [editForm, setEditForm] = useState({
+        name: '',
+        species: '犬' as '犬' | '猫' | 'その他',
+        breed: '',
+        color: '',
+        age: '',
+        gender: 'unknown' as 'male' | 'female' | 'unknown',
+        features: '',
+    });
+
     useEffect(() => {
         const init = async () => {
             const { data: { user } } = await supabase.auth.getUser();
@@ -41,6 +54,56 @@ export default function PetDetailPage() {
 
         init();
     }, [petId, router]);
+
+    // 編集モード開始
+    const startEditing = () => {
+        if (!pet) return;
+        setEditForm({
+            name: pet.name,
+            species: pet.species,
+            breed: pet.breed,
+            color: pet.color,
+            age: pet.age || '',
+            gender: (pet.gender as 'male' | 'female' | 'unknown') || 'unknown',
+            features: pet.features || '',
+        });
+        setIsEditing(true);
+    };
+
+    // 編集キャンセル
+    const cancelEditing = () => {
+        setIsEditing(false);
+    };
+
+    // 編集保存
+    const handleEditSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!pet) return;
+        setIsSaving(true);
+
+        try {
+            const updated = await updatePet(pet.id, {
+                name: editForm.name,
+                species: editForm.species,
+                breed: editForm.breed,
+                color: editForm.color,
+                age: editForm.age || undefined,
+                gender: editForm.gender || undefined,
+                features: editForm.features || undefined,
+            });
+            setPet(updated);
+            setIsEditing(false);
+        } catch (err) {
+            console.error('更新エラー:', err);
+            alert('更新に失敗しました。もう一度お試しください。');
+        } finally {
+            setIsSaving(false);
+        }
+    };
+
+    const handleEditChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        setEditForm({ ...editForm, [e.target.name]: e.target.value });
+    };
 
     const toggleLostStatus = async () => {
         if (!pet) return;
@@ -138,103 +201,239 @@ export default function PetDetailPage() {
                     </Link>
                 </div>
 
-                <div className={styles.petProfile}>
-                    {/* Pet Image */}
-                    <div className={styles.petImageSection}>
-                        <div className={styles.petImage}>
-                            <span className={styles.petEmoji}>
-                                {pet.species === '犬' ? '🐕' : pet.species === '猫' ? '🐈' : '🐾'}
-                            </span>
-                            {pet.is_lost && (
-                                <span className={styles.lostBadge}>迷子中</span>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Pet Info */}
-                    <div className={styles.petInfoSection}>
-                        <div className={styles.petHeader}>
-                            <h1>{pet.name}</h1>
-                            <span className={`badge ${pet.is_lost ? 'badge-warning' : 'badge-success'}`}>
-                                {pet.is_lost ? '🔴 迷子中' : '🟢 通常'}
-                            </span>
+                {/* === 編集モード === */}
+                {isEditing ? (
+                    <form onSubmit={handleEditSubmit} className={styles.editForm}>
+                        <div className={styles.editHeader}>
+                            <h1>✏️ プロフィール編集</h1>
+                            <p>{pet.name}の情報を更新します</p>
                         </div>
 
-                        <div className={styles.infoGrid}>
-                            <div className={styles.infoItem}>
-                                <span className={styles.infoLabel}>種類</span>
-                                <span className={styles.infoValue}>{pet.species}</span>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <span className={styles.infoLabel}>品種</span>
-                                <span className={styles.infoValue}>{pet.breed}</span>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <span className={styles.infoLabel}>毛色</span>
-                                <span className={styles.infoValue}>{pet.color}</span>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <span className={styles.infoLabel}>年齢</span>
-                                <span className={styles.infoValue}>{pet.age || '不明'}</span>
-                            </div>
-                            <div className={styles.infoItem}>
-                                <span className={styles.infoLabel}>性別</span>
-                                <span className={styles.infoValue}>
-                                    {pet.gender === 'male' ? 'オス' : pet.gender === 'female' ? 'メス' : '不明'}
-                                </span>
+                        <div className={styles.editSection}>
+                            <h2>基本情報</h2>
+                            <div className={styles.editGrid}>
+                                <div className={styles.editGroup}>
+                                    <label htmlFor="name">名前 *</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        className="input"
+                                        value={editForm.name}
+                                        onChange={handleEditChange}
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.editGroup}>
+                                    <label htmlFor="species">種類 *</label>
+                                    <select
+                                        id="species"
+                                        name="species"
+                                        className="input"
+                                        value={editForm.species}
+                                        onChange={handleEditChange}
+                                        required
+                                    >
+                                        <option value="犬">犬</option>
+                                        <option value="猫">猫</option>
+                                        <option value="その他">その他</option>
+                                    </select>
+                                </div>
+                                <div className={styles.editGroup}>
+                                    <label htmlFor="breed">品種 *</label>
+                                    <input
+                                        type="text"
+                                        id="breed"
+                                        name="breed"
+                                        className="input"
+                                        value={editForm.breed}
+                                        onChange={handleEditChange}
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.editGroup}>
+                                    <label htmlFor="color">毛色 *</label>
+                                    <input
+                                        type="text"
+                                        id="color"
+                                        name="color"
+                                        className="input"
+                                        value={editForm.color}
+                                        onChange={handleEditChange}
+                                        required
+                                    />
+                                </div>
+                                <div className={styles.editGroup}>
+                                    <label htmlFor="age">年齢</label>
+                                    <input
+                                        type="text"
+                                        id="age"
+                                        name="age"
+                                        className="input"
+                                        placeholder="3歳、1歳半など"
+                                        value={editForm.age}
+                                        onChange={handleEditChange}
+                                    />
+                                </div>
+                                <div className={styles.editGroup}>
+                                    <label htmlFor="gender">性別</label>
+                                    <select
+                                        id="gender"
+                                        name="gender"
+                                        className="input"
+                                        value={editForm.gender}
+                                        onChange={handleEditChange}
+                                    >
+                                        <option value="unknown">不明</option>
+                                        <option value="male">オス</option>
+                                        <option value="female">メス</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
 
-                        <div className={styles.features}>
-                            <span className={styles.infoLabel}>特徴・備考</span>
-                            <p>{pet.features || '未登録'}</p>
+                        <div className={styles.editSection}>
+                            <h2>特徴</h2>
+                            <div className={styles.editGroup}>
+                                <label htmlFor="features">特徴・備考</label>
+                                <textarea
+                                    id="features"
+                                    name="features"
+                                    className={`input ${styles.textarea}`}
+                                    placeholder="首輪の色、体の模様、性格など"
+                                    value={editForm.features}
+                                    onChange={handleEditChange}
+                                    rows={4}
+                                />
+                            </div>
                         </div>
 
-                        {pet.is_lost && pet.lost_at && (
-                            <div className={styles.lostInfo}>
-                                <h3>迷子情報</h3>
-                                <div className={styles.lostDetails}>
-                                    <div className={styles.lostItem}>
-                                        <span className={styles.lostLabel}>📅 迷子発生日</span>
-                                        <span>{new Date(pet.lost_at).toLocaleDateString('ja-JP')}</span>
+                        <div className={styles.editActions}>
+                            <button
+                                type="button"
+                                className="btn btn-outline"
+                                onClick={cancelEditing}
+                                disabled={isSaving}
+                            >
+                                キャンセル
+                            </button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary"
+                                disabled={isSaving}
+                            >
+                                {isSaving ? '保存中...' : '💾 変更を保存'}
+                            </button>
+                        </div>
+                    </form>
+                ) : (
+                    /* === 閲覧モード === */
+                    <>
+                        <div className={styles.petProfile}>
+                            {/* Pet Image */}
+                            <div className={styles.petImageSection}>
+                                <div className={styles.petImage}>
+                                    <span className={styles.petEmoji}>
+                                        {pet.species === '犬' ? '🐕' : pet.species === '猫' ? '🐈' : '🐾'}
+                                    </span>
+                                    {pet.is_lost && (
+                                        <span className={styles.lostBadge}>迷子中</span>
+                                    )}
+                                </div>
+                            </div>
+
+                            {/* Pet Info */}
+                            <div className={styles.petInfoSection}>
+                                <div className={styles.petHeader}>
+                                    <h1>{pet.name}</h1>
+                                    <span className={`badge ${pet.is_lost ? 'badge-warning' : 'badge-success'}`}>
+                                        {pet.is_lost ? '🔴 迷子中' : '🟢 通常'}
+                                    </span>
+                                </div>
+
+                                <div className={styles.infoGrid}>
+                                    <div className={styles.infoItem}>
+                                        <span className={styles.infoLabel}>種類</span>
+                                        <span className={styles.infoValue}>{pet.species}</span>
                                     </div>
-                                    <div className={styles.lostItem}>
-                                        <span className={styles.lostLabel}>📍 最後の目撃場所</span>
-                                        <span>{pet.last_seen_location}</span>
+                                    <div className={styles.infoItem}>
+                                        <span className={styles.infoLabel}>品種</span>
+                                        <span className={styles.infoValue}>{pet.breed}</span>
                                     </div>
+                                    <div className={styles.infoItem}>
+                                        <span className={styles.infoLabel}>毛色</span>
+                                        <span className={styles.infoValue}>{pet.color}</span>
+                                    </div>
+                                    <div className={styles.infoItem}>
+                                        <span className={styles.infoLabel}>年齢</span>
+                                        <span className={styles.infoValue}>{pet.age || '不明'}</span>
+                                    </div>
+                                    <div className={styles.infoItem}>
+                                        <span className={styles.infoLabel}>性別</span>
+                                        <span className={styles.infoValue}>
+                                            {pet.gender === 'male' ? 'オス' : pet.gender === 'female' ? 'メス' : '不明'}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className={styles.features}>
+                                    <span className={styles.infoLabel}>特徴・備考</span>
+                                    <p>{pet.features || '未登録'}</p>
+                                </div>
+
+                                {pet.is_lost && pet.lost_at && (
+                                    <div className={styles.lostInfo}>
+                                        <h3>迷子情報</h3>
+                                        <div className={styles.lostDetails}>
+                                            <div className={styles.lostItem}>
+                                                <span className={styles.lostLabel}>📅 迷子発生日</span>
+                                                <span>{new Date(pet.lost_at).toLocaleDateString('ja-JP')}</span>
+                                            </div>
+                                            <div className={styles.lostItem}>
+                                                <span className={styles.lostLabel}>📍 最後の目撃場所</span>
+                                                <span>{pet.last_seen_location}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className={styles.actions}>
+                            <h2>アクション</h2>
+                            <div className={styles.actionButtons}>
+                                <button
+                                    className={`btn btn-secondary ${styles.editBtn}`}
+                                    onClick={startEditing}
+                                >
+                                    ✏️ プロフィールを編集
+                                </button>
+                                <button
+                                    className={`btn ${pet.is_lost ? 'btn-secondary' : 'btn-primary'} ${styles.lostToggle}`}
+                                    onClick={toggleLostStatus}
+                                    disabled={isChangingStatus}
+                                >
+                                    {isChangingStatus ? '処理中...' : pet.is_lost ? '🟢 迷子をOFFにする' : '🔴 迷子をONにする'}
+                                </button>
+                                <button className={`btn btn-outline ${styles.deleteBtn}`} onClick={handleDelete}>
+                                    🗑️ 削除する
+                                </button>
+                            </div>
+                        </div>
+
+                        {pet.is_lost && (
+                            <div className={styles.relatedInfo}>
+                                <h2>関連する目撃情報</h2>
+                                <div className={styles.emptyRelated}>
+                                    <p>まだ目撃情報はありません</p>
+                                    <Link href="/service/map" className="btn btn-secondary">
+                                        🗺️ マップで確認する
+                                    </Link>
                                 </div>
                             </div>
                         )}
-                    </div>
-                </div>
-
-                {/* Actions */}
-                <div className={styles.actions}>
-                    <h2>アクション</h2>
-                    <div className={styles.actionButtons}>
-                        <button
-                            className={`btn ${pet.is_lost ? 'btn-secondary' : 'btn-primary'} ${styles.lostToggle}`}
-                            onClick={toggleLostStatus}
-                            disabled={isChangingStatus}
-                        >
-                            {isChangingStatus ? '処理中...' : pet.is_lost ? '🟢 迷子をOFFにする' : '🔴 迷子をONにする'}
-                        </button>
-                        <button className={`btn btn-outline ${styles.deleteBtn}`} onClick={handleDelete}>
-                            🗑️ 削除する
-                        </button>
-                    </div>
-                </div>
-
-                {pet.is_lost && (
-                    <div className={styles.relatedInfo}>
-                        <h2>関連する目撃情報</h2>
-                        <div className={styles.emptyRelated}>
-                            <p>まだ目撃情報はありません</p>
-                            <Link href="/service/map" className="btn btn-secondary">
-                                🗺️ マップで確認する
-                            </Link>
-                        </div>
-                    </div>
+                    </>
                 )}
             </div>
 

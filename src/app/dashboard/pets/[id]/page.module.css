@@ -276,3 +276,138 @@
     justify-content: flex-end;
     gap: var(--space-md);
 }
+
+/* Edit Form */
+.editForm {
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-2xl);
+    box-shadow: var(--shadow-md);
+}
+
+.editHeader {
+    margin-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--neutral-100);
+    padding-bottom: var(--space-lg);
+}
+
+.editHeader h1 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-xs);
+}
+
+.editHeader p {
+    color: var(--neutral-500);
+    font-size: 0.9rem;
+}
+
+.editSection {
+    margin-bottom: var(--space-xl);
+}
+
+.editSection h2 {
+    font-size: 1.1rem;
+    color: var(--neutral-700);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.editGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+}
+
+@media (min-width: 768px) {
+    .editGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.editGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.editGroup label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--neutral-600);
+}
+
+.textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+}
+
+.editActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--neutral-100);
+}
+
+.editBtn {
+    flex-grow: 1;
+}
+
+/* Mobile optimization */
+@media (max-width: 767px) {
+    .petDetailPage {
+        padding: var(--space-lg) 0 var(--space-xl);
+    }
+
+    .petProfile {
+        padding: var(--space-lg);
+        gap: var(--space-lg);
+    }
+
+    .petImage {
+        width: 140px;
+        height: 140px;
+    }
+
+    .petEmoji {
+        font-size: 4rem;
+    }
+
+    .petHeader h1 {
+        font-size: 1.25rem;
+    }
+
+    .infoGrid {
+        gap: var(--space-sm);
+    }
+
+    .infoLabel {
+        font-size: 0.75rem;
+    }
+
+    .infoValue {
+        font-size: 0.85rem;
+    }
+
+    .actions {
+        padding: var(--space-lg);
+    }
+
+    .editForm {
+        padding: var(--space-lg);
+    }
+
+    .editHeader h1 {
+        font-size: 1.2rem;
+    }
+
+    .editActions {
+        flex-direction: column;
+    }
+
+    .editActions .btn {
+        width: 100%;
+    }
+}
