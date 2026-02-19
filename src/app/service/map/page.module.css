@@ -277,6 +277,41 @@
     }
 }
 
+/* Locate Button */
+.locateBtn {
+    position: absolute;
+    bottom: 80px;
+    right: var(--space-lg);
+    width: 48px;
+    height: 48px;
+    background: white;
+    border: none;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all var(--transition-fast);
+}
+
+.locateBtn:hover {
+    background: var(--primary-50);
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+.locateBtn:active {
+    transform: scale(0.95);
+}
+
+.locateBtn:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}
+
 /* Legend */
 .mapLegend {
     position: absolute;
@@ -386,6 +421,14 @@
 }
 
 @media (max-width: 768px) {
+    .locateBtn {
+        bottom: var(--space-lg);
+        right: var(--space-md);
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+    }
+
     .mapLegend {
         bottom: auto;
         top: var(--space-md);

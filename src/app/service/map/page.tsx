@@ -108,6 +108,10 @@ export default function MapPage() {
 
     const [selectedMarker, setSelectedMarker] = useState<MarkerData | null>(null);
 
+    // マップの表示中心（現在地ボタン用）
+    const [mapCenter, setMapCenter] = useState<[number, number] | null>(null);
+    const [isLocating, setIsLocating] = useState(false);
+
     // データベースからデータを取得
     useEffect(() => {
         async function fetchData() {
@@ -142,23 +146,45 @@ export default function MapPage() {
         fetchData();
     }, []);
 
-    // 現在地を取得
-    const handleGetCurrentLocation = () => {
+    // 初回ロード時に現在地を自動取得
+    useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    setCenterLat(position.coords.latitude.toString());
-                    setCenterLng(position.coords.longitude.toString());
-                    setLocationName('📍 現在地');
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    setMapCenter([lat, lng]);
                 },
-                (error) => {
-                    console.error('位置情報の取得に失敗しました:', error);
-                    alert('位置情報の取得に失敗しました');
+                () => {
+                    // 取得失敗時はデフォルト（東京）のまま
                 }
             );
-        } else {
-            alert('このブラウザは位置情報をサポートしていません');
         }
+    }, []);
+
+    // 現在地を取得（フィルター用 + マップ移動）
+    const handleGetCurrentLocation = () => {
+        if (!navigator.geolocation) {
+            alert('このブラウザは位置情報をサポートしていません');
+            return;
+        }
+        setIsLocating(true);
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                setCenterLat(lat.toString());
+                setCenterLng(lng.toString());
+                setLocationName('📍 現在地');
+                setMapCenter([lat, lng]);
+                setIsLocating(false);
+            },
+            (error) => {
+                console.error('位置情報の取得に失敗しました:', error);
+                alert('位置情報の取得に失敗しました');
+                setIsLocating(false);
+            }
+        );
     };
 
     // 地図クリックで位置を設定
@@ -441,12 +467,26 @@ export default function MapPage() {
                     <MapComponent
                         markers={filteredMarkers}
                         onMarkerClick={(marker) => setSelectedMarker(marker as MarkerData)}
-                        center={useLocationFilter ? [parseFloat(centerLat), parseFloat(centerLng)] : undefined}
+                        center={
+                            useLocationFilter
+                                ? [parseFloat(centerLat), parseFloat(centerLng)]
+                                : mapCenter || undefined
+                        }
                         radiusKm={useLocationFilter ? parseFloat(radius) : undefined}
                         onMapClick={handleMapClick}
                         isSelectingLocation={useLocationFilter}
                     />
                 )}
+
+                {/* 現在地ボタン */}
+                <button
+                    className={styles.locateBtn}
+                    onClick={handleGetCurrentLocation}
+                    disabled={isLocating}
+                    title="現在地に移動"
+                >
+                    {isLocating ? '⏳' : '📍'}
+                </button>
 
                 {/* Legend */}
                 <div className={styles.mapLegend}>
