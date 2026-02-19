@@ -456,155 +456,218 @@
     border-color: var(--neutral-500);
 }
 
-/* Mobile optimization */
+/* ===== Mobile-First Redesign ===== */
 @media (max-width: 767px) {
+
+    /* --- Hero: コンパクトに --- */
     .hero {
         min-height: auto;
-        padding: var(--space-xl) 0 var(--space-2xl);
+        padding: var(--space-xl) 0 var(--space-lg);
     }
 
     .heroTitle {
         font-size: 1.5rem;
+        line-height: 1.3;
+        margin-bottom: var(--space-sm);
+    }
+
+    .heroTitle br {
+        display: none;
     }
 
     .heroDescription {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        line-height: 1.6;
         margin-bottom: var(--space-lg);
+    }
+
+    .heroDescription br {
+        display: none;
     }
 
     .heroBadge {
         font-size: 0.7rem;
-        padding: 0.3rem 0.75rem;
+        padding: 0.25rem 0.75rem;
         margin-bottom: var(--space-md);
+        gap: var(--space-xs);
     }
 
-    .stats {
-        margin-top: -30px;
-        padding: var(--space-xl) 0;
-    }
-
-    .statCard {
-        padding: var(--space-md);
-    }
-
-    .statNumber {
-        font-size: 1.25rem;
-    }
-
-    .statLabel {
-        font-size: 0.7rem;
-    }
-
-    /* ステップを2列グリッドに */
-    .howItWorks {
-        padding: var(--space-xl) 0;
-    }
-
-    .stepsGrid {
-        grid-template-columns: repeat(2, 1fr);
+    .heroActions {
         gap: var(--space-sm);
     }
 
+    .heroActions .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* --- Stats: 横一列 小さく --- */
+    .stats {
+        padding: var(--space-md) 0;
+        margin-top: -20px;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-xs);
+    }
+
+    .statCard {
+        padding: var(--space-sm);
+        border-radius: var(--radius-md);
+    }
+
+    .statNumber {
+        font-size: 1rem;
+    }
+
+    .statLabel {
+        font-size: 0.6rem;
+    }
+
+    /* --- How It Works: 横スクロールカルーセル --- */
+    .howItWorks {
+        padding: var(--space-lg) 0;
+    }
+
+    .sectionHeader {
+        margin-bottom: var(--space-md);
+    }
+
+    .sectionHeader p {
+        font-size: 0.75rem;
+    }
+
+    .stepsGrid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm);
+        padding-bottom: var(--space-sm);
+        margin: 0 calc(-1 * var(--space-md));
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+
+    .stepsGrid::-webkit-scrollbar {
+        display: none;
+    }
+
     .stepCard {
+        flex: 0 0 72%;
+        scroll-snap-align: start;
         padding: var(--space-md);
     }
 
     .stepCard:last-child {
-        grid-column: 1 / -1;
+        grid-column: auto;
     }
 
     .stepIcon {
-        font-size: 1.75rem;
-        margin-bottom: var(--space-sm);
+        font-size: 1.5rem;
+        margin-bottom: var(--space-xs);
     }
 
     .stepNumber {
-        font-size: 1.5rem;
-        top: var(--space-sm);
-        right: var(--space-sm);
+        font-size: 1.25rem;
+        top: var(--space-xs);
+        right: var(--space-xs);
     }
 
     .stepCard h3 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         margin-bottom: var(--space-xs);
     }
 
     .stepCard p {
-        font-size: 0.8rem;
-        line-height: 1.5;
-    }
-
-    /* フィーチャーを2列グリッドに */
-    .features {
-        padding: var(--space-xl) 0;
-    }
-
-    .featuresGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-sm);
-    }
-
-    .featureCard {
-        padding: var(--space-md);
-    }
-
-    .featureIcon {
-        font-size: 1.5rem;
-        margin-bottom: var(--space-xs);
-    }
-
-    .featureCard h4 {
-        font-size: 0.85rem;
-        margin-bottom: var(--space-xs);
-    }
-
-    .featureCard p {
         font-size: 0.75rem;
         line-height: 1.5;
     }
 
-    /* ミッションプレビュー圧縮 */
+    /* --- Features: コンパクトなリスト + 偶数は2列 --- */
+    .features {
+        padding: var(--space-lg) 0;
+    }
+
+    .featuresGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xs);
+    }
+
+    .featureCard {
+        padding: var(--space-sm) var(--space-md);
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--space-sm);
+        border-radius: var(--radius-md);
+    }
+
+    .featureIcon {
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .featureCard h4 {
+        font-size: 0.8rem;
+        margin-bottom: 2px;
+    }
+
+    .featureCard p {
+        font-size: 0.7rem;
+        line-height: 1.4;
+    }
+
+    /* --- Mission: ビジュアル非表示、テキストのみ --- */
     .missionPreview {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .missionCard {
         padding: var(--space-lg);
+        border-radius: var(--radius-lg);
+    }
+
+    .missionContent h2 {
+        font-size: 1.1rem;
     }
 
     .missionText {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        line-height: 1.6;
         margin-bottom: var(--space-md);
     }
 
     .missionVisual {
-        height: 120px;
+        display: none;
     }
 
-    .missionEmoji {
-        font-size: 3rem;
-    }
-
-    .missionEmojiSmall1,
-    .missionEmojiSmall2 {
-        font-size: 1.25rem;
-    }
-
-    /* セクションヘッダー圧縮 */
-    .sectionHeader {
-        margin-bottom: var(--space-lg);
-    }
-
-    .sectionHeader p {
-        font-size: 0.8rem;
-    }
-
-    /* CTA圧縮 */
+    /* --- CTA: シンプルなバナー --- */
     .cta {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
+    }
+
+    .ctaContent h2 {
+        font-size: 1.1rem;
     }
 
     .ctaContent p {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        margin-bottom: var(--space-md);
+    }
+
+    .ctaContent p br {
+        display: none;
+    }
+
+    .ctaActions {
+        gap: var(--space-sm);
+    }
+
+    .ctaActions .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
     }
 }

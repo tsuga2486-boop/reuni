@@ -291,3 +291,28 @@
         padding-left: var(--space-lg);
     }
 }
+
+/* ===== Mobile Header ===== */
+@media (max-width: 767px) {
+    .headerInner {
+        height: 52px;
+    }
+
+    .logo {
+        font-size: 1.15rem;
+        gap: 0.25rem;
+    }
+
+    .logoIcon {
+        font-size: 1.25rem;
+    }
+
+    .menuToggle {
+        width: 36px;
+        height: 36px;
+    }
+
+    .navOpen {
+        top: 52px;
+    }
+}

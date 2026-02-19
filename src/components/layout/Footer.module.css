@@ -150,31 +150,49 @@
     transform: translateY(-2px);
 }
 
-/* Mobile optimization */
+/* ===== Mobile Footer ===== */
 @media (max-width: 767px) {
     .footer {
-        padding: var(--space-2xl) 0 var(--space-lg);
-        margin-top: var(--space-2xl);
+        padding: var(--space-lg) 0 var(--space-md);
+        margin-top: var(--space-lg);
     }
 
     .footerInner {
-        gap: var(--space-xl);
+        gap: var(--space-md);
     }
 
     .footerGrid {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-md);
+    }
+
+    .brandSection {
+        grid-column: 1 / -1;
     }
 
     .brandDescription {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .footerColumnTitle {
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+        margin-bottom: var(--space-xs);
     }
 
     .footerLink {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
+        padding: 2px 0;
+    }
+
+    .footerBottom {
+        padding-top: var(--space-sm);
+    }
+
+    .copyright {
+        font-size: 0.65rem;
     }
 }

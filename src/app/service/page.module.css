@@ -254,62 +254,84 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile optimization */
+/* ===== Mobile-First Redesign ===== */
 @media (max-width: 767px) {
     .hero {
-        padding: var(--space-lg) 0;
+        padding: var(--space-md) 0;
     }
 
     .heroSubtitle {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .services {
-        margin-top: -20px;
-        padding: var(--space-xl) 0;
+        margin-top: -15px;
+        padding: var(--space-lg) 0;
     }
 
-    /* サービスカードを2列に */
+    /* サービスカード: アイコン横並び2列 */
     .servicesGrid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-sm);
+        gap: var(--space-xs);
     }
 
     .serviceCard {
-        padding: var(--space-md);
+        padding: var(--space-sm) var(--space-md);
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--space-sm);
     }
 
     .serviceIcon {
-        font-size: 1.5rem;
-        margin-bottom: var(--space-xs);
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
     }
 
     .serviceCard h3 {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .serviceCard p {
-        font-size: 0.75rem;
-        line-height: 1.5;
+        font-size: 0.7rem;
+        line-height: 1.4;
     }
 
+    /* フロー: 横スクロール */
     .usageSection {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
+    }
+
+    .flowSteps {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--space-sm);
+        margin: 0 calc(-1 * var(--space-md));
+        padding: 0 var(--space-md) var(--space-sm);
+    }
+
+    .flowSteps::-webkit-scrollbar {
+        display: none;
     }
 
     .flowStep {
+        flex: 0 0 75%;
+        scroll-snap-align: start;
         padding: var(--space-md);
     }
 
     .flowStep h3 {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .flowStep p {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .ctaCard {
-        padding: var(--space-lg);
+        padding: var(--space-md);
     }
 }

@@ -507,62 +507,91 @@
     }
 }
 
-/* Mobile optimization */
+/* ===== Mobile-First Redesign ===== */
 @media (max-width: 767px) {
     .hero {
-        padding: var(--space-lg) 0;
+        padding: var(--space-md) 0;
     }
 
     .heroSubtitle {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .story {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .storyText p {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        line-height: 1.6;
     }
 
-    .storyVisual span {
-        font-size: 3rem;
+    .storyVisual {
+        display: none;
     }
 
-    /* バリューカードを2列に */
+    /* バリューカード: アイコン横並び2列 */
+    .valuesSection {
+        padding: var(--space-lg) 0;
+    }
+
     .valuesGrid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-sm);
+        gap: var(--space-xs);
     }
 
     .valueCard {
-        padding: var(--space-md);
+        padding: var(--space-sm) var(--space-md);
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: var(--space-sm);
     }
 
     .valueIcon {
-        font-size: 1.5rem;
-        margin-bottom: var(--space-xs);
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
     }
 
     .valueCard h3 {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .valueCard p {
-        font-size: 0.75rem;
-        line-height: 1.5;
+        font-size: 0.7rem;
+        line-height: 1.4;
     }
 
+    /* チーム: コンパクト横並び */
     .teamSection {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
+    }
+
+    .teamGrid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-xs);
     }
 
     .teamMember {
-        padding: var(--space-md);
+        padding: var(--space-sm);
+        text-align: center;
+    }
+
+    .memberEmoji {
+        font-size: 1.5rem;
+    }
+
+    .teamMember h3 {
+        font-size: 0.8rem;
+    }
+
+    .teamMember p {
+        font-size: 0.7rem;
     }
 
     .contactSection {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .contactCard {
@@ -570,14 +599,22 @@
     }
 
     .missionSection {
-        padding: var(--space-lg);
+        padding: var(--space-md);
+    }
+
+    .missionSection h2 {
+        font-size: 1rem;
+    }
+
+    .missionSection p {
+        font-size: 0.75rem;
     }
 
     .ctaSection {
-        padding: var(--space-xl) 0;
+        padding: var(--space-lg) 0;
     }
 
     .ctaContent>p {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 }
