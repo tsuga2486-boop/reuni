@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import { supabase } from '@/lib/supabase';
+import { isInAppBrowser, getMobileOS } from '@/lib/webview-detect';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -12,6 +13,13 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
+    const [isWebView, setIsWebView] = useState(false);
+    const [mobileOS, setMobileOS] = useState<'ios' | 'android' | 'other'>('other');
+
+    useEffect(() => {
+        setIsWebView(isInAppBrowser());
+        setMobileOS(getMobileOS());
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -40,6 +48,22 @@ export default function LoginPage() {
             setError('ログインに失敗しました。メールアドレスとパスワードを確認してください。');
         } finally {
             setIsLoading(false);
+        }
+    };
+
+    const handleGoogleLogin = async () => {
+        if (isWebView) {
+            // WebViewの場合は外部ブラウザで開くよう案内
+            return;
+        }
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: `${window.location.origin}/dashboard`,
+            },
+        });
+        if (error) {
+            setError('Google認証に失敗しました。もう一度お試しください。');
         }
     };
 
@@ -106,23 +130,52 @@ export default function LoginPage() {
                     </div>
 
                     <div className={styles.socialLogin}>
-                        <button
-                            className={`btn btn-outline ${styles.socialBtn}`}
-                            onClick={async () => {
-                                const { error } = await supabase.auth.signInWithOAuth({
-                                    provider: 'google',
-                                    options: {
-                                        redirectTo: `${window.location.origin}/dashboard`,
-                                    },
-                                });
-                                if (error) {
-                                    setError('Google認証に失敗しました。もう一度お試しください。');
-                                }
-                            }}
-                        >
-                            <span>G</span>
-                            Googleでログイン
-                        </button>
+                        {isWebView ? (
+                            <div className={styles.webviewBanner}>
+                                <div className={styles.webviewIcon}>🌐</div>
+                                <p className={styles.webviewTitle}>
+                                    Googleログインには外部ブラウザが必要です
+                                </p>
+                                <p className={styles.webviewDescription}>
+                                    {mobileOS === 'ios'
+                                        ? 'Safariでこのページを開いてください'
+                                        : mobileOS === 'android'
+                                            ? 'Chromeでこのページを開いてください'
+                                            : 'ブラウザでこのページを開いてください'
+                                    }
+                                </p>
+                                <button
+                                    className={`btn btn-primary ${styles.openBrowserBtn}`}
+                                    onClick={() => {
+                                        // URLをコピーして案内
+                                        navigator.clipboard?.writeText(window.location.href).then(() => {
+                                            alert(
+                                                mobileOS === 'ios'
+                                                    ? 'URLをコピーしました！\n\nSafariを開いてアドレスバーに貼り付けてください。'
+                                                    : 'URLをコピーしました！\n\nChromeを開いてアドレスバーに貼り付けてください。'
+                                            );
+                                        }).catch(() => {
+                                            alert(
+                                                `以下のURLをブラウザで開いてください:\n\n${window.location.href}`
+                                            );
+                                        });
+                                    }}
+                                >
+                                    📋 URLをコピーして{mobileOS === 'ios' ? 'Safari' : mobileOS === 'android' ? 'Chrome' : 'ブラウザ'}で開く
+                                </button>
+                                <p className={styles.webviewHint}>
+                                    💡 メールアドレスでのログインはこのままご利用いただけます
+                                </p>
+                            </div>
+                        ) : (
+                            <button
+                                className={`btn btn-outline ${styles.socialBtn}`}
+                                onClick={handleGoogleLogin}
+                            >
+                                <span>G</span>
+                                Googleでログイン
+                            </button>
+                        )}
                     </div>
 
                     <div className={styles.authFooter}>

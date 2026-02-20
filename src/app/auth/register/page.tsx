@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import styles from '../login/page.module.css';
 import { supabase } from '@/lib/supabase';
+import { isInAppBrowser, getMobileOS } from '@/lib/webview-detect';
 
 export default function RegisterPage() {
     const router = useRouter();
@@ -17,6 +18,13 @@ export default function RegisterPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [isWebView, setIsWebView] = useState(false);
+    const [mobileOS, setMobileOS] = useState<'ios' | 'android' | 'other'>('other');
+
+    useEffect(() => {
+        setIsWebView(isInAppBrowser());
+        setMobileOS(getMobileOS());
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,16 +63,27 @@ export default function RegisterPage() {
             }
 
             if (data.user && !data.session) {
-                // メール確認が必要な場合
                 setSuccess('確認メールを送信しました。メールのリンクをクリックして登録を完了してください。');
             } else {
-                // メール確認不要（Supabase設定による）→ ダッシュボードへ
                 router.push('/dashboard');
             }
         } catch {
             setError('登録に失敗しました。もう一度お試しください。');
         } finally {
             setIsLoading(false);
+        }
+    };
+
+    const handleGoogleLogin = async () => {
+        if (isWebView) return;
+        const { error: oauthError } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: `${window.location.origin}/dashboard`,
+            },
+        });
+        if (oauthError) {
+            setError('Google認証に失敗しました。もう一度お試しください。');
         }
     };
 
@@ -165,23 +184,51 @@ export default function RegisterPage() {
                     </div>
 
                     <div className={styles.socialLogin}>
-                        <button
-                            className={`btn btn-outline ${styles.socialBtn}`}
-                            onClick={async () => {
-                                const { error: oauthError } = await supabase.auth.signInWithOAuth({
-                                    provider: 'google',
-                                    options: {
-                                        redirectTo: `${window.location.origin}/dashboard`,
-                                    },
-                                });
-                                if (oauthError) {
-                                    setError('Google認証に失敗しました。もう一度お試しください。');
-                                }
-                            }}
-                        >
-                            <span>G</span>
-                            Googleで登録
-                        </button>
+                        {isWebView ? (
+                            <div className={styles.webviewBanner}>
+                                <div className={styles.webviewIcon}>🌐</div>
+                                <p className={styles.webviewTitle}>
+                                    Google登録には外部ブラウザが必要です
+                                </p>
+                                <p className={styles.webviewDescription}>
+                                    {mobileOS === 'ios'
+                                        ? 'Safariでこのページを開いてください'
+                                        : mobileOS === 'android'
+                                            ? 'Chromeでこのページを開いてください'
+                                            : 'ブラウザでこのページを開いてください'
+                                    }
+                                </p>
+                                <button
+                                    className={`btn btn-primary ${styles.openBrowserBtn}`}
+                                    onClick={() => {
+                                        navigator.clipboard?.writeText(window.location.href).then(() => {
+                                            alert(
+                                                mobileOS === 'ios'
+                                                    ? 'URLをコピーしました！\n\nSafariを開いてアドレスバーに貼り付けてください。'
+                                                    : 'URLをコピーしました！\n\nChromeを開いてアドレスバーに貼り付けてください。'
+                                            );
+                                        }).catch(() => {
+                                            alert(
+                                                `以下のURLをブラウザで開いてください:\n\n${window.location.href}`
+                                            );
+                                        });
+                                    }}
+                                >
+                                    📋 URLをコピーして{mobileOS === 'ios' ? 'Safari' : mobileOS === 'android' ? 'Chrome' : 'ブラウザ'}で開く
+                                </button>
+                                <p className={styles.webviewHint}>
+                                    💡 メールアドレスでの登録はこのままご利用いただけます
+                                </p>
+                            </div>
+                        ) : (
+                            <button
+                                className={`btn btn-outline ${styles.socialBtn}`}
+                                onClick={handleGoogleLogin}
+                            >
+                                <span>G</span>
+                                Googleで登録
+                            </button>
+                        )}
                     </div>
 
                     <div className={styles.authFooter}>
