@@ -188,6 +188,9 @@ export default function Home() {
                 サービスを見る
               </Link>
             </div>
+            <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+              ペットが迷子になった方は <Link href="/guide/lost-pet" style={{ color: 'var(--primary-600)', fontWeight: 600, textDecoration: 'underline' }}>迷子ペットの探し方ガイド</Link> をご覧ください
+            </p>
           </div>
         </div>
       </section>

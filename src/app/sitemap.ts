@@ -90,6 +90,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.5,
         },
+        {
+            url: `${BASE_URL}/guide/lost-pet`,
+            lastModified: now,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
     ];
 
     return staticPages;

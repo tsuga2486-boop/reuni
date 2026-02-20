@@ -33,6 +33,7 @@ export default function Footer() {
 
                         <div className={styles.linkGroup}>
                             <h4 className={styles.linkGroupTitle}>サポート</h4>
+                            <Link href="/guide/lost-pet" className={styles.footerLink}>迷子ペットの探し方</Link>
                             <Link href="/faq" className={styles.footerLink}>よくある質問</Link>
                             <Link href="/contact" className={styles.footerLink}>お問い合わせ</Link>
                             <Link href="/privacy" className={styles.footerLink}>プライバシーポリシー</Link>

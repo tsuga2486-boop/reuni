@@ -2,8 +2,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'REUNI（リユニ）について - REUNI',
-    description: 'REUNI（リユニ）は迷子ペットと飼い主の再会を支援するプラットフォームです。私たちの会社概要と理念をご紹介します。',
+    title: 'REUNI（リユニ）について - 迷子ペットと飼い主の再会を支援',
+    description: 'REUNI（リユニ）は迷子になった犬・猫と飼い主の再会を支援する無料プラットフォーム。目撃情報の共有、地図での捜索、チャット機能でペットの捜索をサポート。殺処分ゼロを目指します。',
 };
 
 export default function AboutPage() {

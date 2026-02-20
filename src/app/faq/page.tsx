@@ -1,14 +1,27 @@
 import Link from 'next/link';
 import styles from './page.module.css';
+import { FAQPageJsonLd, BreadcrumbJsonLd } from '@/components/seo/JsonLd';
 
 export const metadata = {
-    title: 'よくある質問 - REUNI',
-    description: 'REUNI（リユニ）に関するよくあるご質問と回答をまとめました。',
+    title: 'よくある質問 - 迷子ペットの探し方・登録方法・目撃情報の投稿',
+    description: 'REUNI（リユニ）の使い方に関するFAQ。ペットが迷子になったらどうする？目撃情報の投稿方法、アカウント登録、チャット機能などよくある質問に回答します。',
 };
 
 export default function FaqPage() {
     return (
         <div className={styles.faqPage}>
+            <FAQPageJsonLd faqs={[
+                { question: 'REUNI（リユニ）とは何ですか？', answer: 'REUNI（リユニ）は、迷子になったペットと飼い主の再会を支援する無料プラットフォームです。地図ベースの目撃情報共有やチャット機能を通じて、地域全体でペットの捜索をサポートします。' },
+                { question: 'REUNIは無料で使えますか？', answer: 'はい、基本機能はすべて無料でご利用いただけます。ペットの登録、迷子情報の投稿・閲覧、目撃情報の共有、チャット機能など主要な機能はすべて無料です。' },
+                { question: '対応しているペットの種類は？', answer: '現在、犬・猫・鳥・その他の小動物に対応しています。今後、対応する動物の種類を拡大していく予定です。' },
+                { question: 'ペットが迷子になったらどうすればいいですか？', answer: 'マイページからペットの「迷子をONにする」ボタンを押してください。最後に見かけた場所を入力すると、マップ上に表示されます。同時に、最寄りの動物愛護センターや警察への届け出もお忘れなく。' },
+                { question: '目撃情報はどうやって投稿しますか？', answer: '「目撃・保護情報」ページから「情報を投稿する」ボタンをクリックし、発見場所、日時、ペットの特徴などを入力してください。地図上で場所を指定することもできます。' },
+                { question: '個人情報は安全ですか？', answer: 'REUNIではお客様の個人情報を厳重に管理しています。チャットでのやり取りは当事者間のみで共有され、第三者に公開されることはありません。' },
+            ]} />
+            <BreadcrumbJsonLd items={[
+                { name: 'ホーム', url: 'https://reuni.jp' },
+                { name: 'よくある質問', url: 'https://reuni.jp/faq' },
+            ]} />
             {/* Hero */}
             <section className={styles.hero}>
                 <div className="container">

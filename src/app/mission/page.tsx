@@ -2,8 +2,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata = {
-    title: '理念・ミッション - REUNI',
-    description: 'REUNI（リユニ）の理念とミッション。迷子・殺処分ゼロを目指し、ペットと飼い主の再会を支援します。',
+    title: '理念・ミッション - 迷子・殺処分ゼロを目指して',
+    description: 'REUNI（リユニ）の理念とミッション。日本では毎年多くのペットが迷子になり殺処分されています。迷子ペットと飼い主の再会をテクノロジーで支援し、殺処分ゼロの社会を実現します。',
 };
 
 export default function MissionPage() {

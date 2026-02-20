@@ -2,8 +2,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'サービス - REUNI',
-    description: 'REUNI（リユニ）のサービス一覧。迷子ペット登録、目撃・保護情報の共有、地図検索、チャット機能をご利用いただけます。',
+    title: '迷子ペット捜索サービス - ペット登録・目撃情報・地図検索',
+    description: 'REUNI（リユニ）のサービス一覧。迷子犬・迷子猫の登録、目撃・保護情報の共有、地図での捜索エリア確認、飼い主とのチャット機能を無料でご利用いただけます。',
 };
 
 export default function ServicePage() {
