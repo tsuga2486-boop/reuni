@@ -3,7 +3,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: 'サービス - REUNI',
-    description: 'REUNIのサービス一覧。迷子ペット登録、目撃・保護情報の共有、地図検索、チャット機能をご利用いただけます。',
+    description: 'REUNI（リユニ）のサービス一覧。迷子ペット登録、目撃・保護情報の共有、地図検索、チャット機能をご利用いただけます。',
 };
 
 export default function ServicePage() {
@@ -12,7 +12,7 @@ export default function ServicePage() {
             {/* Hero */}
             <section className={styles.hero}>
                 <div className="container">
-                    <h1>REUNIサービス</h1>
+                    <h1>REUNI（リユニ）サービス</h1>
                     <p className={styles.heroSubtitle}>
                         ペットの迷子対策から再会まで、すべてをサポート
                     </p>

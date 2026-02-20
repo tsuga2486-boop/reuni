@@ -24,22 +24,22 @@ export const metadata: Metadata = {
       : 'http://localhost:3000'
   ),
   title: {
-    default: "REUNI - 迷子・殺処分ゼロを目指して",
-    template: "%s | REUNI",
+    default: "REUNI（リユニ） - 迷子・殺処分ゼロを目指して",
+    template: "%s | REUNI（リユニ）",
   },
-  description: "大切な家族との再会を支援する。迷子ペットと飼い主を繋ぐプラットフォーム「REUNI」",
-  keywords: ["迷子ペット", "ペット探し", "保護動物", "REUNI", "再会", "迷子犬", "迷子猫"],
+  description: "大切な家族との再会を支援する。迷子ペットと飼い主を繋ぐプラットフォーム「REUNI（リユニ）」",
+  keywords: ["迷子ペット", "ペット探し", "保護動物", "REUNI", "リユニ", "再会", "迷子犬", "迷子猫"],
   openGraph: {
-    title: "REUNI - 迷子・殺処分ゼロを目指して",
-    description: "大切な家族との再会を支援する。迷子ペットと飼い主を繋ぐプラットフォーム",
+    title: "REUNI（リユニ） - 迷子・殺処分ゼロを目指して",
+    description: "大切な家族との再会を支援する。迷子ペットと飼い主を繋ぐプラットフォーム「REUNI（リユニ）」",
     type: "website",
-    siteName: "REUNI",
+    siteName: "REUNI（リユニ）",
     locale: "ja_JP",
   },
   twitter: {
     card: "summary_large_image",
-    title: "REUNI - 迷子・殺処分ゼロを目指して",
-    description: "大切な家族との再会を支援する。迷子ペットと飼い主を繋ぐプラットフォーム",
+    title: "REUNI（リユニ） - 迷子・殺処分ゼロを目指して",
+    description: "大切な家族との再会を支援する。迷子ペットと飼い主を繋ぐプラットフォーム「REUNI（リユニ）」",
   },
   robots: {
     index: true,

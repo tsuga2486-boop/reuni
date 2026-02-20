@@ -3,7 +3,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: 'よくある質問 - REUNI',
-    description: 'REUNIに関するよくあるご質問と回答をまとめました。',
+    description: 'REUNI（リユニ）に関するよくあるご質問と回答をまとめました。',
 };
 
 export default function FaqPage() {
@@ -14,7 +14,7 @@ export default function FaqPage() {
                 <div className="container">
                     <h1>よくある質問</h1>
                     <p className={styles.heroSubtitle}>
-                        REUNIに関するよくあるご質問と回答をまとめました
+                        REUNI（リユニ）に関するよくあるご質問と回答をまとめました
                     </p>
                 </div>
             </section>
@@ -25,9 +25,9 @@ export default function FaqPage() {
                     <h2>🐾 サービスについて</h2>
                     <div className={styles.faqList}>
                         <details className={styles.faqItem}>
-                            <summary>REUNIとは何ですか？</summary>
+                            <summary>REUNI（リユニ）とは何ですか？</summary>
                             <p>
-                                REUNIは、迷子になったペットと飼い主の再会を支援するプラットフォームです。
+                                REUNI（リユニ）は、迷子になったペットと飼い主の再会を支援するプラットフォームです。
                                 地図ベースの目撃情報共有やチャット機能を通じて、
                                 地域全体でペットの捜索をサポートします。
                             </p>

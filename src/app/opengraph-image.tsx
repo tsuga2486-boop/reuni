@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
 
-export const alt = 'REUNI - 迷子ペットと飼い主をつなぐ';
+export const alt = 'REUNI（リユニ） - 迷子ペットと飼い主をつなぐ';
 export const size = {
     width: 1200,
     height: 630,

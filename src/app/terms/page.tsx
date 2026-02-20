@@ -2,7 +2,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: '利用規約 - REUNI',
-    description: 'REUNIの利用規約。サービスのご利用にあたっての条件をご確認ください。',
+    description: 'REUNI（リユニ）の利用規約。サービスのご利用にあたっての条件をご確認ください。',
 };
 
 export default function TermsPage() {
@@ -16,7 +16,7 @@ export default function TermsPage() {
                     <section className={styles.section}>
                         <h2>第1条（適用）</h2>
                         <p>
-                            本規約は、REUNI（以下「当社」）が提供するサービス「REUNI」
+                            本規約は、REUNI（リユニ）（以下「当社」）が提供するサービス「REUNI」
                             （以下「本サービス」）の利用に関する条件を定めるものです。
                             ユーザーは、本規約に同意の上、本サービスを利用するものとします。
                         </p>

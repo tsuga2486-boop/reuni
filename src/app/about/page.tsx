@@ -2,8 +2,8 @@ import Link from 'next/link';
 import styles from './page.module.css';
 
 export const metadata = {
-    title: 'REUNIについて - REUNI',
-    description: 'REUNIは迷子ペットと飼い主の再会を支援するプラットフォームです。私たちの会社概要と理念をご紹介します。',
+    title: 'REUNI（リユニ）について - REUNI',
+    description: 'REUNI（リユニ）は迷子ペットと飼い主の再会を支援するプラットフォームです。私たちの会社概要と理念をご紹介します。',
 };
 
 export default function AboutPage() {
@@ -12,7 +12,7 @@ export default function AboutPage() {
             {/* Hero */}
             <section className={styles.hero}>
                 <div className="container">
-                    <h1>REUNIについて</h1>
+                    <h1>REUNI（リユニ）について</h1>
                     <p className={styles.heroSubtitle}>
                         私たちは、ペットと飼い主の絆を守り、
                         <br />
@@ -31,7 +31,7 @@ export default function AboutPage() {
                             <strong>「迷子・殺処分ゼロの社会を実現する」</strong>
                         </p>
                         <p className={styles.statementDescription}>
-                            REUNIは、テクノロジーと地域コミュニティの力を結集し、
+                            REUNI（リユニ）は、テクノロジーと地域コミュニティの力を結集し、
                             迷子になったペットと飼い主の再会を支援します。
                             一日も早い再会が、殺処分という悲しい結末を防ぐことに繋がると信じています。
                         </p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
                 <div className="container">
                     <div className={styles.storyContent}>
                         <div className={styles.storyText}>
-                            <h2>REUNIの始まり</h2>
+                            <h2>REUNI（リユニ）の始まり</h2>
                             <p>
                                 REUNIは「Reunion（再会）」という想いから生まれました。
                             </p>
@@ -93,7 +93,7 @@ export default function AboutPage() {
             {/* Solution */}
             <section className={styles.solution}>
                 <div className="container">
-                    <h2 className="text-center">REUNIが提供する解決策</h2>
+                    <h2 className="text-center">REUNI（リユニ）が提供する解決策</h2>
                     <div className={styles.solutionGrid}>
                         <div className={styles.solutionCard}>
                             <div className={styles.solutionIcon}>📱</div>
@@ -194,7 +194,7 @@ export default function AboutPage() {
                         <h2>一緒に変えていきませんか</h2>
                         <p>
                             あなたの参加が、迷子・殺処分ゼロの社会への一歩になります。
-                            今日からREUNIを始めましょう。
+                            今日からREUNI（リユニ）を始めましょう。
                         </p>
                         <div className={styles.ctaActions}>
                             <Link href="/auth/register" className="btn btn-primary">

@@ -21,7 +21,7 @@ export default function Home() {
             支援します
           </h1>
           <p className={styles.heroDescription}>
-            REUNIは、迷子になったペットと飼い主を繋ぐプラットフォームです。
+            REUNI（リユニ）は、迷子になったペットと飼い主を繋ぐプラットフォームです。
             <br />
             目撃情報の共有とリアルタイムのコミュニケーションで、
             <br />
@@ -68,7 +68,7 @@ export default function Home() {
       <section className={styles.howItWorks}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2>REUNIの仕組み</h2>
+            <h2>REUNI（リユニ）の仕組み</h2>
             <p>シンプルな3ステップで、ペットとの再会を支援します</p>
           </div>
           <div className={styles.stepsGrid}>
@@ -107,7 +107,7 @@ export default function Home() {
       <section className={styles.features}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <h2>REUNIの特徴</h2>
+            <h2>REUNI（リユニ）の特徴</h2>
             <p>ペットと飼い主の再会を全力でサポート</p>
           </div>
           <div className={styles.featuresGrid}>
@@ -154,7 +154,7 @@ export default function Home() {
               <p className={styles.missionText}>
                 日本では毎年多くのペットが迷子になり、
                 残念ながら殺処分される動物も少なくありません。
-                REUNIは、テクノロジーの力でペットと飼い主の再会率を高め、
+                REUNI（リユニ）は、テクノロジーの力でペットと飼い主の再会率を高め、
                 殺処分ゼロの社会を目指します。
               </p>
               <Link href="/about" className="btn btn-primary">

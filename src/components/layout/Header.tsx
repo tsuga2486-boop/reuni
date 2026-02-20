@@ -58,7 +58,7 @@ export default function Header() {
 
                 <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
                     <Link href="/" className={styles.navLink} onClick={closeMenu}>ホーム</Link>
-                    <Link href="/about" className={styles.navLink} onClick={closeMenu}>REUNIについて</Link>
+                    <Link href="/about" className={styles.navLink} onClick={closeMenu}>REUNI（リユニ）について</Link>
                     <Link href="/service" className={styles.navLink} onClick={closeMenu}>サービス</Link>
                     <Link href="/company" className={styles.navLink} onClick={closeMenu}>会社概要</Link>
                     <Link href="/contact" className={styles.navLink} onClick={closeMenu}>お問い合わせ</Link>

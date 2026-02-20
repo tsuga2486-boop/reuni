@@ -2,7 +2,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: 'プライバシーポリシー - REUNI',
-    description: 'REUNIのプライバシーポリシー。個人情報の取り扱いについてご説明いたします。',
+    description: 'REUNI（リユニ）のプライバシーポリシー。個人情報の取り扱いについてご説明いたします。',
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
                     <section className={styles.section}>
                         <h2>1. はじめに</h2>
                         <p>
-                            REUNI（以下「当社」）は、お客様の個人情報の保護を重要な責務と考え、
+                            REUNI（リユニ）（以下「当社」）は、お客様の個人情報の保護を重要な責務と考え、
                             個人情報の保護に関する法律（個人情報保護法）およびその他の関連法令を遵守し、
                             以下のプライバシーポリシーに従い個人情報を適切に取り扱います。
                         </p>

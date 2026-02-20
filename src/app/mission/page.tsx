@@ -3,7 +3,7 @@ import styles from './page.module.css';
 
 export const metadata = {
     title: '理念・ミッション - REUNI',
-    description: 'REUNIの理念とミッション。迷子・殺処分ゼロを目指し、ペットと飼い主の再会を支援します。',
+    description: 'REUNI（リユニ）の理念とミッション。迷子・殺処分ゼロを目指し、ペットと飼い主の再会を支援します。',
 };
 
 export default function MissionPage() {
@@ -29,7 +29,7 @@ export default function MissionPage() {
                             <strong>「迷子・殺処分ゼロの社会を実現する」</strong>
                         </p>
                         <p className={styles.statementDescription}>
-                            REUNIは、テクノロジーと地域コミュニティの力を結集し、
+                            REUNI（リユニ）は、テクノロジーと地域コミュニティの力を結集し、
                             迷子になったペットと飼い主の再会を支援します。
                             一日も早い再会が、殺処分という悲しい結末を防ぐことに繋がると信じています。
                         </p>
@@ -66,7 +66,7 @@ export default function MissionPage() {
             {/* Solution */}
             <section className={styles.solution}>
                 <div className="container">
-                    <h2 className="text-center">REUNIが提供する解決策</h2>
+                    <h2 className="text-center">REUNI（リユニ）が提供する解決策</h2>
                     <div className={styles.solutionGrid}>
                         <div className={styles.solutionCard}>
                             <div className={styles.solutionIcon}>📱</div>
@@ -138,7 +138,7 @@ export default function MissionPage() {
                         <h2>一緒に変えていきませんか</h2>
                         <p>
                             あなたの参加が、迷子・殺処分ゼロの社会への一歩になります。
-                            今日からREUNIを始めましょう。
+                            今日からREUNI（リユニ）を始めましょう。
                         </p>
                         <div className={styles.ctaActions}>
                             <Link href="/auth/register" className="btn btn-primary">

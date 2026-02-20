@@ -26,8 +26,8 @@ export default function Footer() {
                         </div>
 
                         <div className={styles.linkGroup}>
-                            <h4 className={styles.linkGroupTitle}>REUNIについて</h4>
-                            <Link href="/about" className={styles.footerLink}>REUNIについて</Link>
+                            <h4 className={styles.linkGroupTitle}>REUNI（リユニ）について</h4>
+                            <Link href="/about" className={styles.footerLink}>REUNI（リユニ）について</Link>
                             <Link href="/company" className={styles.footerLink}>会社概要</Link>
                         </div>
 
