@@ -269,33 +269,46 @@
         padding: var(--space-lg) 0;
     }
 
-    /* サービスカード: アイコン横並び2列 */
+    /* サービスカード: 1列リスト型 */
     .servicesGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-xs);
-    }
-
-    .serviceCard {
-        padding: var(--space-sm) var(--space-md);
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+        grid-template-columns: 1fr;
         gap: var(--space-sm);
     }
 
-    .serviceIcon {
-        font-size: 1.25rem;
-        margin-bottom: 0;
-        flex-shrink: 0;
+    .serviceCard {
+        padding: var(--space-md);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-md);
     }
 
-    .serviceCard h3 {
-        font-size: 0.8rem;
+    .serviceIcon {
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        flex-shrink: 0;
+        width: 40px;
+        text-align: center;
+    }
+
+    .serviceCard h2 {
+        font-size: 0.9rem;
+        margin-bottom: 2px;
     }
 
     .serviceCard p {
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .serviceLink {
+        margin-left: auto;
+        flex-shrink: 0;
+        font-size: 0.8rem;
     }
 
     /* フロー: 横スクロール */
